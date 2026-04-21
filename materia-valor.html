@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construtora terá que indenizar por falhas em obra — Valor Econômico</title>
+  <meta name="description" content="Matéria do Valor Econômico sobre liminar obtida pelo Condomínio Perfil Morumbi. Defesa conduzida por Thiago Badaró, sócio do Nardes & Badaró Advocacia.">
+  <link rel="icon" type="image/png" href="thiago-badaro.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primaria: #1A2E4A;
+      --primaria-escura: #0F1D33;
+      --acento: #B08D57;
+      --acento-claro: #D9B97F;
+      --texto-claro: #F5F4F0;
+      --texto-suave: #C8CEDA;
+      --borda: rgba(176, 141, 87, 0.28);
+    }
+
+    html, body { min-height: 100%; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texto-claro);
+      background:
+        radial-gradient(900px 500px at 50% -100px, rgba(176,141,87,0.18), transparent 60%),
+        radial-gradient(700px 500px at 100% 110%, rgba(176,141,87,0.08), transparent 55%),
+        linear-gradient(180deg, var(--primaria-escura) 0%, var(--primaria) 60%, var(--primaria-escura) 100%);
+      min-height: 100vh;
+      padding: 40px 20px 64px;
+    }
+
+    .nav {
+      max-width: 720px;
+      margin: 0 auto 32px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--acento-claro);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border: 1px solid var(--borda);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      transition: border-color .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .back:hover { border-color: var(--acento); color: var(--texto-claro); transform: translateX(-2px); }
+
+    article {
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      padding: 48px 44px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--acento-claro);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow .dot { width: 6px; height: 6px; background: var(--acento); border-radius: 50%; display: inline-block; }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1.18;
+      color: var(--texto-claro);
+      margin-bottom: 18px;
+      letter-spacing: -0.005em;
+    }
+
+    .lede {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      font-style: italic;
+      color: var(--texto-suave);
+      line-height: 1.6;
+      padding-left: 16px;
+      border-left: 2px solid var(--acento);
+      margin-bottom: 28px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      font-size: 0.82rem;
+      color: var(--texto-suave);
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--borda);
+      margin-bottom: 32px;
+    }
+
+    .meta strong { color: var(--texto-claro); font-weight: 600; }
+
+    .body-text p {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--texto-suave);
+      margin-bottom: 20px;
+    }
+
+    .body-text p strong { color: var(--texto-claro); font-weight: 600; }
+
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      color: var(--texto-claro);
+      text-align: center;
+      padding: 28px 20px;
+      margin: 32px 0;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      position: relative;
+    }
+
+    .pull-quote::before {
+      content: "“";
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--acento);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acento-claro);
+      margin-top: 16px;
+    }
+
+    .highlight-card {
+      background: rgba(176, 141, 87, 0.08);
+      border-left: 3px solid var(--acento);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 24px 0;
+    }
+
+    .highlight-card .hc-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acento-claro);
+      margin-bottom: 8px;
+    }
+
+    .highlight-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+    .source {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--borda);
+      font-size: 0.85rem;
+      color: var(--texto-suave);
+      line-height: 1.7;
+    }
+
+    .source a {
+      color: var(--acento-claro);
+      text-decoration: none;
+      word-break: break-all;
+      border-bottom: 1px solid var(--borda);
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .source a:hover { color: var(--texto-claro); border-color: var(--acento); }
+
+    .source-label {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--texto-claro);
+      margin-right: 8px;
+    }
+
+    footer {
+      max-width: 720px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--texto-suave);
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+    }
+
+    footer .brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--acento-claro);
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+
+    @media (max-width: 560px) {
+      article { padding: 32px 22px; border-radius: 14px; }
+      h1 { font-size: 1.7rem; }
+      .lede { font-size: 0.98rem; }
+      .pull-quote { font-size: 1.1rem; padding: 22px 12px; }
+      .body-text p { font-size: 0.97rem; line-height: 1.8; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a class="back" href="index.html">‹ Voltar</a>
+  </div>
+
+  <article>
+
+    <div class="eyebrow"><span class="dot"></span> Valor Econômico · Legislação</div>
+
+    <h1>Construtora terá que indenizar por falhas em obra</h1>
+
+    <p class="lede">
+      Perícia no Condomínio Perfil Morumbi, em São Paulo, indicou 32 falhas na construção que podem afetar a segurança de moradores e pedestres na região.
+    </p>
+
+    <div class="meta">
+      <span>Por <strong>Marcela Villar</strong> — De São Paulo</span>
+      <span>Publicado em <strong>24/05/2024</strong></span>
+    </div>
+
+    <div class="body-text">
+
+      <p>
+        O <strong>Condomínio Perfil Morumbi</strong>, na zona sul da cidade de <strong>São Paulo</strong>, conseguiu <strong>liminar</strong> (tutela de urgência) para ser indenizado pela <strong>construtora Exto</strong> por conta de <strong>vícios de construção</strong> ocultos no empreendimento. <strong>Perícia judicial</strong>, feita antecipadamente, indicou 32 falhas na construção que podem afetar a <strong>segurança de moradores e pedestres</strong> na região — uma das mais graves na fachada, que apresenta rachaduras após oito anos da entrega do imóvel.
+      </p>
+
+      <p>
+        A decisão, segundo especialistas, é um importante precedente para discussões similares, envolvendo vícios ocultos de construção. Chama a atenção, acrescentam, ter sido estabelecido, em sede de liminar, um valor alto ao condomínio.
+      </p>
+
+      <p>
+        A Justiça, inicialmente, concedeu a indenização por danos materiais em <strong>R$ 1,6 milhão</strong>. Mas após recurso da Exto, o valor foi reduzido para <strong>R$ 800 mil</strong>. A primeira decisão foi dada pela juíza Renata Martins de Carvalho, da 17ª Vara Cível do Foro Central Cível da Comarca de São Paulo, em março, e revista parcialmente, no início de maio, pelo desembargador Luiz Fernando Salles Rossi, da 8ª Câmara de Direito Privado do Tribunal de Justiça de São Paulo (TJSP).
+      </p>
+
+      <p>
+        Rossi entendeu ser adequada a ação, mas que por conta da “divergência expressiva de valores e o estágio inicial do processo”, acredita ser mais “razoável e prudente” autorizar uma indenização menor para que sejam conduzidas obras prioritárias de reparação. Ao todo, o condomínio pede indenização de R$ 2,6 milhões, que inclui itens mais graves de reparação rápida e outros não emergenciais. O laudo pericial produzido por ele indicou 47 vícios na construção (processo nº 1026318-57.2024.8.26.0100).
+      </p>
+
+      <p>
+        A ação indenizatória foi movida em fevereiro de 2024. Antes disso, em 2022, o Perfil Morumbi entrou com um processo de produção antecipada de provas, onde foi feita a perícia. O perito judicial indicou “erro no projeto, execução ou material utilizado”. Além da fachada, cita como os principais problemas infiltrações, cabeamento elétrico exposto, queda de revestimentos de gesso e pisos soltando.
+      </p>
+
+      <p>
+        A juíza Renata Martins de Carvalho, ao conceder a liminar, afirma que apesar de não estarem configuradas as hipóteses previstas no Código de Processo Civil (CPC), é preciso dar a tutela por conta do “risco iminente aos moradores, funcionários e visitantes que circulam na área externa do condomínio e, também, aos pedestres que circulam nas imediações, devido aos vícios construtivos graves apontados no laudo pericial”.
+      </p>
+
+      <p>
+        O advogado <strong>Thiago Badaró</strong>, sócio do <strong>Nardes &amp; Badaró Advocacia</strong>, que defende o condomínio na ação, afirma que decidiu entrar com a primeira ação para produzir provas a fim de <em>“dar força para o processo indenizatório”</em>. “O condomínio poderia ficar mais seguro e tranquilo que teria as provas para demonstrar os prejuízos que sofreu”, afirma. Segundo ele, é incomum a Justiça dar em sede de liminar uma indenização de valores tão altos contra uma construtora.
+      </p>
+
+      <div class="pull-quote">
+        Trabalho com isso há 12 anos e nunca vi decisão como essa.
+        <cite>— Thiago Badaró, sócio do Nardes &amp; Badaró Advocacia</cite>
+      </div>
+
+      <p>
+        Badaró diz ainda que o principal risco está na fachada, “que está começando a ruir”. “É um vício crônico e pode eventualmente cair um pedaço na cabeça de alguma pessoa”. Ele também contesta o prazo de cinco anos da garantia que a Exto alega nos autos. “O prédio foi entregue em 2016, mas os vícios construtivos eram endógenos, estavam escondidos e só foram descobertos depois, há cerca de três a quatro anos. Então o prazo deveria começar a contar a partir da descoberta”, completa.
+      </p>
+
+      <p>
+        Para <strong>Raphael Nardes</strong>, sócio que também atuou no caso, a liminar “é um marco positivo para os condomínios que, muitas vezes, sofrem com vícios construtivos, sendo prejudicados tanto pelo tempo de espera no desfecho de processos que demoram anos para serem finalizados, quanto pela depreciação do valor da propriedade imobiliária”.
+      </p>
+
+      <div class="highlight-card">
+        <div class="hc-title">Outro lado</div>
+        <p>
+          Já o advogado da Exto na ação, Luiz Fernando Blumenthal Pardell, sócio do TSJP Advogados, diz que a construtora está “sempre à disposição” para fazer reparos necessários, que o condomínio não realizou manutenção preventiva e que o tribunal entendeu que os orçamentos apresentados foram “discrepantes” e, por isso, reduziu o valor. Pardell não quis comentar sobre os próximos passos na ação: “Vamos nos manifestar no processo.”
+        </p>
+      </div>
+
+      <p>
+        Segundo o especialista em direito imobiliário Marcelo Tapai, sócio do Tapai Advogados, vícios de construção não são incomuns e as liminares “são um adiantamento do que seria o resultado final do processo”. “Quando existe uma urgência e afeta a segurança de moradores, o prédio ou terceiros, normalmente se consegue uma liminar para realizar os reparos emergenciais”, afirma. Tapai acrescenta que não há jurisprudência fixa sobre isso, que varia muito pelo caso e a perícia costuma ser determinante.
+      </p>
+
+    </div>
+
+    <div class="source">
+      <span class="source-label">Fonte original:</span>
+      <a href="https://valor.globo.com/legislacao/noticia/2024/05/24/construtora-tera-que-indenizar-por-falhas-em-obra.ghtml" target="_blank" rel="noopener">valor.globo.com/legislacao/noticia/2024/05/24/construtora-tera-que-indenizar-por-falhas-em-obra.ghtml</a>
+    </div>
+
+  </article>
+
+  <footer>
+    <div class="brand">Nardes &amp; Badaró · Advocacia</div>
+    <div style="margin-top:6px;">Reprodução autorizada para fins de divulgação profissional.</div>
+  </footer>
+
+</body>
+</html>
