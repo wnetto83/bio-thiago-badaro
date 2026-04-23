@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categorização de Conteúdo — Thiago Badaró</title>
+  <meta name="description" content="Mapa mental de Categorização de Conteúdo — Os 3 Níveis, Os 3 Tipos, Proporções e Produção.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primaria: #1A2E4A;
+      --primaria-escura: #0F1D33;
+      --acento: #B08D57;
+      --acento-claro: #D9B97F;
+      --texto-claro: #F5F4F0;
+      --texto-suave: #C8CEDA;
+      --borda: rgba(176, 141, 87, 0.28);
+      --c1: #5B9BD5;
+      --c2: #6EB87A;
+      --c3: #D98A4A;
+      --c4: #A97AB5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texto-claro);
+      background:
+        radial-gradient(900px 500px at 50% -80px, rgba(176,141,87,0.14), transparent 60%),
+        linear-gradient(180deg, var(--primaria-escura) 0%, var(--primaria) 55%, var(--primaria-escura) 100%);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      padding: 40px 24px 36px;
+      text-align: center;
+      border-bottom: 1px solid var(--borda);
+      position: relative;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 24px;
+      top: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border: 1px solid var(--borda);
+      border-radius: 8px;
+      color: var(--acento-claro);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: all 0.22s;
+    }
+
+    .back-btn:hover {
+      border-color: var(--acento);
+      background: rgba(176,141,87,0.08);
+    }
+
+    .header-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--acento-claro);
+      margin-bottom: 12px;
+    }
+
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--texto-claro);
+      margin-bottom: 10px;
+    }
+
+    .header-hint {
+      font-size: 0.8rem;
+      color: var(--texto-suave);
+    }
+
+    /* ── Controls ── */
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ctrl {
+      background: rgba(176,141,87,0.1);
+      border: 1px solid var(--borda);
+      color: var(--acento-claro);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-ctrl:hover {
+      background: rgba(176,141,87,0.18);
+      border-color: var(--acento);
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 24px 20px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.75rem;
+      color: var(--texto-suave);
+      letter-spacing: 0.04em;
+    }
+
+    .legend-pip {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    /* ── Root node ── */
+    .root-wrap {
+      text-align: center;
+      padding: 8px 24px 32px;
+    }
+
+    .root-node {
+      display: inline-block;
+      background: linear-gradient(135deg, #8A6B35 0%, var(--acento-claro) 50%, #8A6B35 100%);
+      color: #0F1D33;
+      padding: 16px 44px;
+      border-radius: 50px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow:
+        0 0 0 6px rgba(176,141,87,0.12),
+        0 12px 36px rgba(0,0,0,0.4);
+    }
+
+    /* ── Grid ── */
+    .branches-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 0 24px 64px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 660px) {
+      .branches-grid { grid-template-columns: 1fr; }
+      .back-btn { position: static; margin-bottom: 16px; display: inline-flex; }
+      .page-header { padding-top: 24px; }
+      .header-title { font-size: 1.6rem; }
+    }
+
+    /* ── Branch card ── */
+    .branch-card {
+      background: rgba(255,255,255,0.035);
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: border-color 0.25s;
+    }
+
+    .branch-card.open {
+      border-color: rgba(176,141,87,0.45);
+    }
+
+    .branch-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.2s, border-color 0.2s;
+      position: relative;
+    }
+
+    .branch-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(176,141,87,0.07), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .branch-header:hover::before { opacity: 1; }
+
+    .branch-card.open .branch-header {
+      border-bottom-color: var(--borda);
+    }
+
+    .branch-accent {
+      width: 4px;
+      border-radius: 4px;
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+
+    .branch-title-wrap { flex: 1; }
+
+    .branch-num {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .branch-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .branch-chevron {
+      font-size: 1.3rem;
+      line-height: 1;
+      transition: transform 0.28s ease;
+      color: var(--acento-claro);
+    }
+
+    .branch-card.open .branch-chevron { transform: rotate(90deg); }
+
+    .branch-body {
+      display: none;
+      padding: 12px 0 8px;
+    }
+
+    .branch-card.open .branch-body { display: block; }
+
+    /* ── Tree ── */
+    .tree-node { }
+
+    .tree-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .tree-row.leaf { cursor: default; }
+    .tree-row:hover:not(.leaf) { background: rgba(255,255,255,0.04); }
+
+    .tree-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .tree-pip {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tree-pip.parent {
+      background: transparent;
+      border: 1.5px solid currentColor;
+    }
+
+    .tree-label {
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: var(--texto-suave);
+      flex: 1;
+    }
+
+    .tree-label.d0 {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--texto-claro);
+    }
+
+    .tree-caret {
+      font-size: 0.8rem;
+      line-height: 1;
+      padding-top: 4px;
+      flex-shrink: 0;
+      color: var(--acento-claro);
+      opacity: 0.7;
+      transition: transform 0.2s;
+    }
+
+    .tree-node.open > .tree-row > .tree-caret { transform: rotate(90deg); }
+
+    .tree-children { display: none; }
+    .tree-node.open > .tree-children { display: block; }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="index.html" class="back-btn">← Voltar</a>
+    <div class="header-eyebrow">Estratégia de Conteúdo</div>
+    <h1 class="header-title">Categorização de Conteúdo</h1>
+    <p class="header-hint">Clique em qualquer nó para expandir ou recolher</p>
+  </header>
+
+  <div class="controls-bar">
+    <button class="btn-ctrl" onclick="expandAll()">Expandir tudo</button>
+    <button class="btn-ctrl" onclick="collapseAll()">Recolher tudo</button>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-pip" style="background:var(--c1)"></div> I. Os 3 Níveis</div>
+    <div class="legend-item"><div class="legend-pip" style="background:var(--c2)"></div> II. Os 3 Tipos</div>
+    <div class="legend-item"><div class="legend-pip" style="background:var(--c3)"></div> III. Proporções</div>
+    <div class="legend-item"><div class="legend-pip" style="background:var(--c4)"></div> IV. Produção</div>
+  </div>
+
+  <div class="root-wrap">
+    <div class="root-node">Categorização de Conteúdo</div>
+  </div>
+
+  <div class="branches-grid" id="map"></div>
+
+  <script>
+  const BRANCHES = [
+    {
+      color: 'var(--c1)',
+      num: 'I',
+      title: 'Os 3 Níveis',
+      children: [
+        { t: 'Graus de Evolução no Mercado', c: [
+          { t: 'Nível 1 — Topo de Funil', c: [
+            { t: 'Feito para pessoas INICIANTES' },
+            { t: 'Consciência 1 — Totalmente Inconsciente', c: [
+              { t: 'Mostrar que ele tem um PROBLEMA' },
+              { t: 'Mostrar que ele tem uma OPORTUNIDADE' },
+            ]},
+            { t: 'Consciência 2 — Consciente do Problema', c: [
+              { t: 'Mostrar que existe uma SOLUÇÃO' },
+              { t: 'Mostrar que ele é capaz de aproveitar a OPORTUNIDADE' },
+            ]},
+            { t: 'Exemplos Clássicos', c: [
+              { t: '"5 Livros que..."' },
+              { t: '"Por que ______ é importante?"' },
+              { t: '"O que é ________?"' },
+            ]},
+          ]},
+          { t: 'Nível 2 — Meio de Funil', c: [
+            { t: 'Feito para pessoas INTERMEDIÁRIAS' },
+            { t: 'Consciência 3 — Consciente da Solução', c: [
+              { t: 'Mostrar que existe um PRODUTO capaz de entregar a solução' },
+              { t: 'Tornar claro o SEU MECANISMO ÚNICO' },
+            ]},
+            { t: 'Exemplos Clássicos', c: [
+              { t: 'SEU processo' },
+            ]},
+          ]},
+          { t: 'Nível 3 — Fundo de Funil', c: [
+            { t: 'Feito para pessoas mais AVANÇADAS' },
+            { t: 'Consciência 4 — Consciente do Produto', c: [
+              { t: 'Mostrar que O SEU é o melhor produto dentre todas as opções' },
+            ]},
+            { t: 'Consciência 5 — Totalmente Consciente', c: [
+              { t: 'Quebrar as possíveis objeções de venda' },
+              { t: 'Gerar Urgência / Escassez para motivar a compra' },
+            ]},
+            { t: 'Exemplos Clássicos', c: [
+              { t: 'Usar TERMOS que o iniciante não entende' },
+            ]},
+          ]},
+        ]},
+      ]
+    },
+    {
+      color: 'var(--c2)',
+      num: 'II',
+      title: 'Os 3 Tipos',
+      children: [
+        { t: '3C\'s do Conteúdo', c: [
+          { t: 'Tipo 1 — CONHECER', c: [
+            { t: 'Objetivo: Aumentar a base' },
+            { t: 'Conteúdos mais compartilháveis', c: [
+              { t: 'Conteúdos "How to"', c: [
+                { t: 'Como fazer...' },
+                { t: 'Como eu fiz...' },
+              ]},
+            ]},
+            { t: 'Bater em DORES' },
+            { t: 'Bater em OPORTUNIDADES' },
+            { t: 'Despertar interesse no expert / perfil / solução' },
+            { t: '17 Tipos de Conteúdo', c: [
+              { t: '1. Memes relacionados ao nicho' },
+              { t: '2. Frases motivadoras ou que gerem identificação' },
+              { t: '3. Conteúdo técnico e aprofundado' },
+              { t: '4. Tutoriais ou passo a passo' },
+              { t: '5. Dicas práticas' },
+              { t: '6. Comparativos' },
+              { t: '7. Infográficos' },
+              { t: '8. Curiosidades' },
+              { t: '9. Indicações' },
+              { t: '10. Novidades da área' },
+              { t: '11. Conteúdo surpreendente ou desconhecido' },
+              { t: '12. Antes e depois' },
+              { t: '13. Conteúdos nostálgicos' },
+              { t: '14. Análises' },
+              { t: '15. Posicionamento sobre determinado assunto' },
+              { t: '16. Ideias criativas' },
+              { t: '17. Timing Posts — Temáticas em Alta / Trending Topics' },
+            ]},
+            { t: 'Métricas', c: [
+              { t: 'Impressões' }, { t: 'Alcance' }, { t: 'Seguidores' }, { t: 'Compartilhamentos' },
+            ]},
+          ]},
+          { t: 'Tipo 2 — CONFIAR', c: [
+            { t: 'Aumentar nível de consciência — sobre o especialista e o mecanismo único' },
+            { t: 'Se RELACIONAR de forma mais próxima — gerar conexão' },
+            { t: 'Construir AUTORIDADE — mostrar os diferenciais' },
+            { t: '13 Tipos para Relacionamento', c: [
+              { t: '1. Histórias pessoais e emocionantes' },
+              { t: '2. Experiências pessoais e comoventes' },
+              { t: '3. Pequenas vitórias alcançadas' },
+              { t: '4. Estilo de vida — hobbies, viagens, atividades' },
+              { t: '5. Comemorações e datas especiais' },
+              { t: '6. Conteúdos inspiradores — frases, histórias' },
+              { t: '7. Fotos pessoais com legendas reflexivas' },
+              { t: '8. Bastidores do trabalho ou vida pessoal' },
+              { t: '9. Identificação pelo gosto pessoal' },
+              { t: '10. Experiências e sentimentos comuns' },
+              { t: '11. Conquistas / Jornada' },
+              { t: '12. Derrotas e dificuldades enfrentadas' },
+              { t: '13. Vulnerabilidades e desafios superados' },
+            ]},
+            { t: '14 Tipos para Autoridade', c: [
+              { t: '1. Prêmios e reconhecimentos' },
+              { t: '2. Patrocinadores importantes' },
+              { t: '3. Testes & Metodologias aplicadas' },
+              { t: '4. Entrevistas e aparições na mídia' },
+              { t: '5. Conquistas pessoais e profissionais' },
+              { t: '6. Produtos ou serviços esgotados' },
+              { t: '7. Publicações com conhecimento aprofundado' },
+              { t: '8. Palestras ministradas' },
+              { t: '9. Evidências de aprendizado constante' },
+              { t: '10. Conteúdos baseados em experiências vividas' },
+              { t: '11. Histórias de transformação pessoal / profissional' },
+              { t: '12. Depoimentos com resultados impressionantes' },
+              { t: '13. Fotos com outras autoridades' },
+              { t: '14. Associação através de imagens' },
+            ]},
+            { t: 'Métricas', c: [
+              { t: 'Engajamento' }, { t: 'Comentários' }, { t: 'Salvamentos' },
+            ]},
+          ]},
+          { t: 'Tipo 3 — COMPRAR', c: [
+            { t: 'Objetivo: Aumentar as Vendas' },
+            { t: 'Apresentar e Explicar os produtos' },
+            { t: 'Quebrar objeções' },
+            { t: 'Ofertas indiretas' },
+            { t: '13 Tipos de Conteúdo', c: [
+              { t: '1. Anunciar disponibilidade de agenda ou inscrições' },
+              { t: '2. Lembretes de promoções e condições especiais' },
+              { t: '3. Depoimentos de clientes satisfeitos' },
+              { t: '4. Respostas às dúvidas frequentes sobre produtos' },
+              { t: '5. Apresentação dos próprios resultados' },
+              { t: '6. Destaque do diferencial competitivo' },
+              { t: '7. Elevar a consciência do público sobre suas necessidades' },
+              { t: '8. Demonstrações de uso do produto ou serviço' },
+              { t: '9. Exemplos de resultados antes e depois' },
+              { t: '10. Explicação da base científica do produto' },
+              { t: '11. Ofertas com escassez — Tempo / Preço / Quantidade' },
+              { t: '12. Antecipação de lançamentos' },
+              { t: '13. Explicação de Garantias — Tempo / Resultado' },
+            ]},
+            { t: 'Métricas', c: [
+              { t: 'CTR nos CTAs' }, { t: 'Leads' }, { t: 'Vendas' }, { t: 'Faturamento' },
+            ]},
+          ]},
+        ]},
+      ]
+    },
+    {
+      color: 'var(--c3)',
+      num: 'III',
+      title: 'Proporções',
+      children: [
+        { t: 'Postar de acordo com 2 variáveis', c: [
+          { t: '1. Momento — O que está acontecendo?', c: [
+            { t: 'Captação → + Tipo 1' },
+            { t: 'Evento → + Tipo 2' },
+            { t: 'Carrinho → + Tipo 3' },
+            { t: 'Intervalo → Ver NECESSIDADE' },
+          ]},
+          { t: '2. Necessidade — O que meu perfil mais precisa?', c: [
+            { t: 'Crescer → Postar + Tipo 1' },
+            { t: 'Engajar → Postar + Tipo 2' },
+            { t: 'Vender → Postar + Tipo 3' },
+          ]},
+        ]},
+        { t: 'Divisão 531', c: [
+          { t: 'Adaptação do Método 9 Quadros do Hyeser' },
+          { t: 'Analisar as 2 variáveis e montar ordem de prioridade entre os 3 tipos' },
+          { t: 'Manter as proporções perto da prioridade definida', c: [
+            { t: '5 — do tipo que mais precisa ser trabalhado' },
+            { t: '3 — do tipo intermediário' },
+            { t: '1 — do tipo que menos precisa ser trabalhado' },
+          ]},
+        ]},
+      ]
+    },
+    {
+      color: 'var(--c4)',
+      num: 'IV',
+      title: 'Produção',
+      children: [
+        { t: 'Referências', c: [
+          { t: '1. Criar perfil novo no Instagram e seguir apenas concorrentes e pessoas do nicho' },
+          { t: '2. Interagir com as postagens — curtir, salvar' },
+          { t: '3. Analisar a aba Explorar gerada a partir desse movimento' },
+        ]},
+        { t: 'Reciclagem', c: [
+          { t: 'Definir "Carro Chefe" do conteúdo gratuito' },
+          { t: 'Usar 1 conteúdo para multiplicar em vários formatos e redes', c: [
+            { t: 'Normalmente um conteúdo mais longo como LIVES abertas ou AULAS' },
+          ]},
+        ]},
+        { t: 'Multiplicação de Formatos', c: [
+          { t: 'Foto Pessoal + Legenda com Conteúdo' },
+          { t: 'Foto Caixinha Perguntas + Legenda com Conteúdo' },
+          { t: 'Ilustração + Legenda com Conteúdo' },
+          { t: 'Trechos de Lives / Aulas' },
+          { t: 'Conteúdo criado para Reels diretamente' },
+          { t: 'Objeção na Headline + Legenda' },
+          { t: 'Memes' },
+          { t: 'História em Quadrinhos' },
+          { t: 'Carrossel de Conteúdos' },
+          { t: 'Carrossel de Resumo' },
+          { t: 'Prints', c: [
+            { t: 'Twitter' }, { t: 'Bloco de Notas' }, { t: 'Direct' },
+            { t: 'Comentário YouTube' }, { t: 'Comentário Twitter' },
+          ]},
+          { t: 'Fundo Preto + Letra Branca — Sameragi' },
+          { t: 'Nota de Esclarecimento' },
+          { t: 'Nota de Repúdio' },
+          { t: 'Desenho Mãos + Narração' },
+          { t: 'Notícias "Fake" (G1)' },
+        ]},
+        { t: 'Repostagem de Conteúdo', c: [
+          { t: 'Repostagens IGUAIS tendem a não performar tanto repetidamente' },
+          { t: 'Mais válido repostar com alguma melhoria de teste', c: [
+            { t: 'Pega conteúdo bom de 2-3 meses atrás, levanta hipótese de melhoria e testa a versão nova' },
+          ]},
+        ]},
+        { t: 'Quadros Fixos', c: [
+          { t: 'CONSTÂNCIA' },
+          { t: 'Caixinha de Perguntas' },
+          { t: 'Reacts — Green Screen' },
+          { t: 'Trending Topic' },
+        ]},
+        { t: 'BANCO de Conteúdos', c: [
+          { t: 'Produzir mais do que a quantidade utilizada por semana' },
+          { t: 'Gerar "folga" para não diminuir a frequência caso o especialista precise se ausentar' },
+        ]},
+        { t: 'Mapa das Ideias Infinitas' },
+        { t: 'Planilha de Calendário' },
+      ]
+    },
+  ];
+
+  let nodeCounter = 0;
+
+  function buildTree(nodes, depth, color) {
+    return nodes.map(n => {
+      const id = 'n' + (nodeCounter++);
+      const hasC = n.c && n.c.length > 0;
+      const indent = depth * 18;
+      return `
+        <div class="tree-node" id="${id}">
+          <div class="tree-row ${hasC ? '' : 'leaf'}" style="padding-left:${16 + indent}px" ${hasC ? `onclick="tog('${id}')"` : ''}>
+            <div class="tree-pip ${hasC ? 'parent' : ''}" style="color:${color};${hasC ? '' : `background:${color};opacity:${Math.max(0.4, 1 - depth * 0.18)}`};margin-top:6px;flex-shrink:0;width:${hasC?8:6}px;height:${hasC?8:6}px;border-radius:50%"></div>
+            <span class="tree-label ${depth === 0 ? 'd0' : ''}" style="padding-left:8px">${n.t}</span>
+            ${hasC ? `<span class="tree-caret" style="color:${color}">›</span>` : ''}
+          </div>
+          ${hasC ? `<div class="tree-children">${buildTree(n.c, depth + 1, color)}</div>` : ''}
+        </div>`;
+    }).join('');
+  }
+
+  function tog(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  function expandAll() {
+    document.querySelectorAll('.tree-node, .branch-card').forEach(el => el.classList.add('open'));
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('.tree-node, .branch-card').forEach(el => el.classList.remove('open'));
+  }
+
+  const map = document.getElementById('map');
+  map.innerHTML = BRANCHES.map(b => `
+    <div class="branch-card">
+      <div class="branch-header" onclick="this.closest('.branch-card').classList.toggle('open')">
+        <div class="branch-accent" style="background:${b.color}"></div>
+        <div class="branch-title-wrap">
+          <div class="branch-num" style="color:${b.color}">${b.num}</div>
+          <div class="branch-title">${b.title}</div>
+        </div>
+        <span class="branch-chevron">›</span>
+      </div>
+      <div class="branch-body">${buildTree(b.children, 0, b.color)}</div>
+    </div>
+  `).join('');
+  </script>
+</body>
+</html>
